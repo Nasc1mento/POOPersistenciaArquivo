@@ -41,13 +41,13 @@ public class Programa {
 				System.out.println("Insira o CPF do cliente: ");
 				String cpfConsulta = "";
 				int segundaOpcao = 0;
-				boolean segundoSair = true;
+				boolean voltarMenuCliente = false;
 				cpfConsulta = sc.next();
 				Cliente cliConsulta = pa.buscarClienteCPF(cpfConsulta);
 				if (cliConsulta != null) {
-					while (segundoSair) {
+					while (voltarMenuCliente == false) {
 						System.out.println(
-								"\n\n\n\nEscolha as op��es para CONTA: \n1) Cadastrar uma conta;\n2) Remover uma conta;\n3) Listar contas;\n4) Depositar depósito;\n5) Realizar transferencia;\n6) Realizar depósito;\n7) Consultar saldo");
+								"\n\n\n\nEscolha as opções para CONTA: \n1) Cadastrar uma conta;\n2) Remover uma conta;\n3) Listar contas;\n4) Entrar na conta;\n5) Voltar");
 						segundaOpcao = sc.nextInt();
 						switch (segundaOpcao) {
 						case 1:
@@ -72,33 +72,47 @@ public class Programa {
 							System.out.println("Digite o número da conta");
 							String nomeContaConsulta = sc.next();
 							Conta c1Consulta = new Conta(nomeContaConsulta);
-							boolean consulta = cliConsulta.consultarConta(c1Consulta);; 
-							if (consulta == false) {
+							Conta consulta = cliConsulta.consultarConta(c1Consulta);
+							if (consulta == null) {
 								System.out.println("Conta não existente");
 								break;
 							}
-							System.out.println("Agora insira a quantia");
-							float quantiaDeposito = sc.nextFloat();
-							c1Consulta.realizarDeposito(quantiaDeposito);
-							pa.atualizarCliente(cliConsulta);
-							break;
-						case 5 :
 							
-							break;
-						case 6:
+							boolean sairMenuConta = false;
+							int opcaoMenuConta = 0;
 							
-							break;
-						case 7:
-							
-							
-							break;
-						default:
-
+							while (sairMenuConta == false) {
+								System.out.println("\n\n\n\nEscolha qual operação deseja realizar: \n1) Depositar;\n2) Sacar;\n3) Ver Saldo;\n4) Voltar");
+								opcaoMenuConta = sc.nextInt();
+								switch(opcaoMenuConta) {
+								case 1:
+									System.out.println("Insira a quantia a ser depositada");
+									float quantiaDeposito = sc.nextFloat();
+									consulta.realizarDeposito(quantiaDeposito);
+									pa.atualizarCliente(cliConsulta);
+									break;
+								case 2:
+									System.out.println("Insira a quantia a ser sacada");
+									float quantiaSaque = sc.nextFloat();
+									consulta.realizarSaque(quantiaSaque);
+									pa.atualizarCliente(cliConsulta);
+									break;
+								case 3:
+									System.out.println(consulta.getSaldo());
+									break;
+								case 4:
+									sairMenuConta = true;
+									break;
+								}
+							}
+						
+						case 5:
+							voltarMenuCliente = true;
 							break;
 						}
 					}
 				} else
-					System.err.println("Cliente n�o encontrado!");
+					System.err.println("Cliente não encontrado!");
 				break;
 			case 5:
 				sair = false;
