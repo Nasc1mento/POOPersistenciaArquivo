@@ -27,7 +27,7 @@ public class Cliente implements Serializable{
 	
 	public void adicionarConta(Conta c) {
 		if(contas.contains(c))
-			System.out.println("Conta já cadastrada");
+			System.out.println("Conta jï¿½ cadastrada");
 		else
 			contas.add(c);
 	}
@@ -37,7 +37,7 @@ public class Cliente implements Serializable{
 			contas.remove(c);
 		}
 		else
-			System.out.println("Conta não cadastrada para este cliente");
+			System.out.println("Conta nï¿½o cadastrada para este cliente");
 	}
 
 	@Override
@@ -59,7 +59,7 @@ public class Cliente implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Cliente [cpf=" + cpf + ", nome=" + nome + ", contas=" + contas + "]";
+		return "Cliente [CPF=" + cpf + ", nome=" + nome + ", contas=" + contas + "]";
 	}
 	
 

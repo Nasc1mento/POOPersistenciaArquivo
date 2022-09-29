@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import bancario.tsi.Cliente;
 
@@ -19,12 +22,20 @@ public class PersistenciaArquivo {
 
 	public void cadastrarCliente(Cliente c) {
 		if (clientesCadastrados.contains(c))
-			System.err.println("Cliente já cadastrado!");
+			System.err.println("Cliente jï¿½ cadastrado!");
 		else {
 			clientesCadastrados.add(c);
 			salvarArquivo();
 		}
 
+	}
+	
+	public void removerCliente(Cliente c) {
+		if(clientesCadastrados.contains(c)) {
+			clientesCadastrados.remove(c);
+			return;
+		}
+		System.out.println("NÃ£o foi possÃ­vel remover");
 	}
 	
 	public Cliente buscarClienteCPF(String cpf) {
@@ -70,8 +81,15 @@ public class PersistenciaArquivo {
 			salvarArquivo();
 		}
 		else {
-			System.err.println("Cliente não encontrado.");
+			System.err.println("Cliente nï¿½o encontrado.");
 		}
 
+	}
+	
+	public void listarClientes() {
+		
+	    
+		
+		clientesCadastrados.forEach((n) -> System.out.println(n));
 	}
 }
