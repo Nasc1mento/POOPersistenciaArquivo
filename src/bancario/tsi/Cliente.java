@@ -39,7 +39,13 @@ public class Cliente implements Serializable{
 		else
 			System.out.println("Conta n�o cadastrada para este cliente");
 	}
-
+	
+	public boolean consultarConta(Conta c) {
+		if (contas.contains(c)) {
+			return true;
+		}
+		return false;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(cpf);

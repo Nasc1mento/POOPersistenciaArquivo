@@ -47,7 +47,7 @@ public class Programa {
 				if (cliConsulta != null) {
 					while (segundoSair) {
 						System.out.println(
-								"\n\n\n\nEscolha as op��es para CONTA: \n1) Cadastrar uma conta;\n2) Remover uma conta;\n3) Listar contas;\n4) Sair.");
+								"\n\n\n\nEscolha as op��es para CONTA: \n1) Cadastrar uma conta;\n2) Remover uma conta;\n3) Listar contas;\n4) Depositar depósito;\n5) Realizar transferencia;\n6) Realizar depósito;\n7) Consultar saldo");
 						segundaOpcao = sc.nextInt();
 						switch (segundaOpcao) {
 						case 1:
@@ -59,14 +59,38 @@ public class Programa {
 							pa.atualizarCliente(cliConsulta);
 							break;
 						case 2:
-
+							System.out.println("Insira o numero da conta");
+							String numeroContaRemover = sc.next();
+							Conta c1Remover = new Conta(numeroContaRemover);
+							cliConsulta.removerConta(c1Remover);
+							pa.atualizarCliente(cliConsulta);
 							break;
 						case 3:
 							System.out.println(cliConsulta.getContas());
 							break;
 						case 4:
-							segundoSair = false;
-							System.out.println("\n\n\n");
+							System.out.println("Digite o número da conta");
+							String nomeContaConsulta = sc.next();
+							Conta c1Consulta = new Conta(nomeContaConsulta);
+							boolean consulta = cliConsulta.consultarConta(c1Consulta);; 
+							if (consulta == false) {
+								System.out.println("Conta não existente");
+								break;
+							}
+							System.out.println("Agora insira a quantia");
+							float quantiaDeposito = sc.nextFloat();
+							c1Consulta.realizarDeposito(quantiaDeposito);
+							pa.atualizarCliente(cliConsulta);
+							break;
+						case 5 :
+							
+							break;
+						case 6:
+							
+							break;
+						case 7:
+							
+							
 							break;
 						default:
 

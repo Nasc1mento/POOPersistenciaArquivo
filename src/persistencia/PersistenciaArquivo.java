@@ -87,9 +87,6 @@ public class PersistenciaArquivo {
 	}
 	
 	public void listarClientes() {
-		
-	    
-		
 		clientesCadastrados.forEach((n) -> System.out.println(n));
 	}
 }

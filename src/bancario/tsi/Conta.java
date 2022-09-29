@@ -26,14 +26,14 @@ public class Conta implements Serializable{
 		if(status == true && quantia > 0)
 			this.saldo = this.saldo + quantia;
 		else
-			System.out.println("Não foi possível realizar o depósito");
+			System.out.println("Nï¿½o foi possï¿½vel realizar o depï¿½sito");
 	}
 	
 	public void realizarSaque(float quantia) {
 		if(status && this.saldo >= quantia)
 			this.saldo -= quantia;
 		else
-			System.out.println("Não foi possível realizar o saque");
+			System.out.println("Nï¿½o foi possï¿½vel realizar o saque");
 		
 	}
 	
@@ -44,8 +44,14 @@ public class Conta implements Serializable{
 			destino.realizarDeposito(quantia);;
 		}
 		else
-			System.out.println("Não foi possível realizar a transferência");
+			System.out.println("Nï¿½o foi possï¿½vel realizar a transferï¿½ncia");
 	}
+	
+	public float getSaldo() {
+		return this.saldo;
+	}
+	
+	
 
 	@Override
 	public String toString() {
