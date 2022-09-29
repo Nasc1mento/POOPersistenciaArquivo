@@ -33,6 +33,7 @@ public class PersistenciaArquivo {
 	public void removerCliente(Cliente c) {
 		if(clientesCadastrados.contains(c)) {
 			clientesCadastrados.remove(c);
+			salvarArquivo();
 			return;
 		}
 		System.out.println("Não foi possível remover");

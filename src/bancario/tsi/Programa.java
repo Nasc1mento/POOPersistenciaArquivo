@@ -36,6 +36,7 @@ public class Programa {
 				String removerCpf = sc.next();
 				Cliente removerCliente = new Cliente(removerCpf);
 				pa.removerCliente(removerCliente);
+				removerCliente = null;
 				break;
 			case 4:
 				System.out.println("Insira o CPF do cliente: ");
